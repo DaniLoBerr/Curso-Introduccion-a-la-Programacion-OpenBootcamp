@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Lenguajes compilados e interpretados</h1>
+  <h2>Qué es un compilador</h2>
+  <p>
+    Es un programa cuya función es la de coger un fichero de código escrito en un lenguaje y convertirlo en otra cosa. Es básicamente un traductor, es decir, compila un lenguaje de entrada en un lenguaje destino. Esa otra cosa puede ser código máquina u otro lenguaje de programación. Tipos: Los que generan código máquina y los que generan código intermedio. Debido a esto, los lenguajes se pueden diferencias entre compilados, los que una vez traducidos generan código máquina, y los interpretados, que se traducen a un código intermedio.
+
+    Código fuente -> Fase de compilado -> Código final
+  </p>
+  <p>
+    El proceso de compilado pasa por varias fases:
+    <dl>
+      <dt>Análisis léxico</dt>
+      <dd>
+        El compilador lee el código fuente del fichero que le pasamos mediante un analizador léxico. Este va leyendo caracter por caracter el fichero completo. La función principal del analizador léxico es la generación de tokens o stings de tokens, es decir, de cada caracter que lee, genera una cadena de texto respecto a cada uno. Ejemplo:
+          - V (caracter) -> Letra V (token que genera el analizador léxico)
+          - A -> Letra A
+          - = -> Símbolo de igual
+          - etc.
+        Y así con todo el documento. Lee el código fuente y lo tokeniza.
+        Posteriormente,  busca entre los caracteres que ha leido lo que se llaman las palabras reservadas que haya por el documento, es decir, busca conjuntos seguidos de caracteres que formen unas palabras concretas. En Java esas palabras pueden ser class, var, int, do, for, static, etc. Por ejemplo, si el anañizador sintáctico se encuentra esto:
+        
+        var variable = 10
+
+        El compilador reconoce "var" como una palabra concreta que se refiere a una variable. La palabra "variable" la identifica como un identificador, es decir, el nombre de las variables se les conoce como identificador. Después analiza el símbolo "igual", que quiere decir que eso es un símbolo de asignación, y finalmente se encuentra con el número 10, que lo reconoce como un número entero.
+      </dd>
+
+      <dt>Análisis sintáctico</dt>
+      <dd>
+        Una vez terminado el análisis léxico, el compilador procede a analizar el sentido o la coherencia de todo lo que ha leido, es decir, que esos caracteres y palabras cumplan las normas del lenguaje. Por ejemplo, la expresión var variable = 10 sería correcta pero no var variable = ;.
+      </dd>
+
+      <dt>Generación de código intermedio</dt>
+      <dd>
+        El analizador sintáctico, una vez analizado todo y comprobado que está correcto, genera un código intermedio. Este código intermedio lo que hace es cambiar el código fuente inicial por un código que no llega a ser lenguaje máquina pero si más parecido, de mucho más bajo nivel, lo cual puede serle útil en el futuro. Ejemplo, bytecode de Java.
+        Dicho de otra manera, se genera un código que simplifica el lenguaje humano (de alto nivel) a algo que está mejor representado en estructuras de datos y que el compilador puede manipular mejor.
+        En esta fase se genera una estructura de datos llamada Abstract Syntax Tree, una estructura con forma de árbol que representa todo nuestro código pero a nivel de estructura de datos.
+      </dd>
+
+      <dt>Optimización de código intermedio</dt>
+      <dd>
+        Algunos compiladores (no todos, lo normal es que si) incluyen esta fase. Los compiladores optimizadores son capaces de darse cuenta de algunas partes de nuestro código que puedan ser redundantes o que haya partes del código innecesarias y optimizar esas partes, incluso de eliminar ciertas partes del código resultante.
+        Otra cosa que puede ocurrir en esta fase es que el compilador puede determinar que hacer una iteración sea más costoso que quitar la iteración y meter directamente las líneas de la iteración escritas seguidas en el código resultante. Esto se denomina "Unroll loops".
+      </dd>
+
+      <dt>Generación de código</dt>
+      <dd>
+        Aquí es donde el compilador genera o código máquina o un código para ser interpretado. De hecho existen dos tipos de compiladores, los que generan uno o los que generan otro.
+      </dd>
+    </dl>
+  </p>
+  <p>
+    - Lenguajes compilados: se compila a código máquina, se ejecuta directamente en el procesador a travñés de l SO. lENGUAJE c, c++, rust, golang, ensamblador.
+
+    - Lenguajes interpretados: NO lo ejecuta un so ni la cpu, se ejecuta a través de una máquina virtual o interprete. Lenguajes: Java (se ejecuta en una JVM), aunque en el caso de java, el código fuente se compila a bytecode y ese bytecode lo interpreta la jvm, pyhton (en el interprete de python), php.
+
+    - Lenguajes híbridos. C#, por ejemplo. Se genera un código intermedio llamado MSIL (), y se interpreta, pero el interprete se da cuenta de que a veces hay partes del código que se repite mucho por lo que por su propia cuenta compila ciertas partes para que lo ejecute la memoria del procesador directamente y el programa vaya mas rapido. Esta técnica se conce como JIT (Just In Time), JIT Compiler 
+  </p>
+  <p>
+    Los compiladores no solo se utilizan para traducir lenguajes de programación, se utilizan también para emuladores.
+  </p>
+</body>
+</html>
