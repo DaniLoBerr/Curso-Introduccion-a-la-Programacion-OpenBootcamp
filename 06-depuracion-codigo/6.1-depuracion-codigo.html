@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Depuración del código</h1>
+  <p>
+    Consiste en buscar programas o anomalías durante la ejecución de nuestro programa. Para esto se utiliza una herramienta llamada depurador o debugger. Es una buena práctica encontrar y solucionar errores utilizando el depurador y no utilizando prints que vayan impriendo los resultados en pantalla y comprobando que el código funcione correctamente. El depurados sirve para buscar y solucionar errores de nuestor código pero en tiempo de ejecución, si el código tiene algún error con el cual no se puede ejecutar el código, no se puede utilizar.
+  </p>
+
+  <h2>Break points</h2>
+  <p>
+    Los depuradores funcionan mediante puntos de ruptura, que son partes en las que le decimos al programa que debe parar. Nosotros seleccionamos en el IDE el punto de ruptura que queramos y, al ejecutar el depurador, el programa se ejecuta hasta ese punto y nos abre la ventana del depurador. En este punto, el programa está en proceso de ejecución (no se ha finalizado el programa) y se queda esperando a que nosostros hagamos algo en el depurador.
+  </p>
+  <p>
+    En el depurador podemos ir viendo línea por línea lo que hace nuestro programa cuando se ejecuta, es decir, detener el programa en ciertos puentos para ver el estado de las variables y los procesos en ese momento. También podemos modificar virtualmente los valores de las variables y demás para evaluar el comportamiento del programa ante ciertas situaciones.
+  </p>
+
+  <h2>Watcher o watch point</h2>
+  <p>
+    Esta es otra de las funcionalidades que tiene el depurador. Funciona como un break point al que se le puede agregar una condición, es decir, que al utilizar el depurador, el programa se detenga en ese punto si se cumple cierta condición. Se utiliza la misma sintaxis que en las condiciones vistas anteriormente.
+  </p>
+
+  <h2>Pila de llamadas</h2>
+  <p>
+    Funcionalidad que sirve para ver que pasos ha seguido el programa hasta su finalización, todos los puntos por los que ha pasado. El IDE nos ordena la pila de llamadas de manera inversa desde  el último paso hasta el primero. Nos indica qué ha invocado cada línea o cada paso, la clase y el paquete. A la pila de llamadas se le llama Stack Trace.
+  </p>
+  <p>
+    Existen también lo que se llaman excepciones en los lenguajes, que es cuando ejecutamos un programa en la que se incluye una expresión que no se puede cumplir (como dividir un valor entre 0). Cuando ocurre esto y ejecutamos el programa, sin siquiera utilizar el depurador, en la pantalla de la consola nos aparece el nombre la de la excepción ocurrida y el stack trace de lo ocurrido: la línea donde ha ocurrido y los puntos por los que ha pasado el programa hasta llegar ahí.
+  </p>
+</body>
+</html>

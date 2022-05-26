@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Tipos de datos</title>
+</head>
+<body>
+  <h1>Tipos de datos: Primitivos y complejos</h1>
+  <p>
+    En la memoria guardamos datos, en forma de secuencias de números. Estos datos se guardan en variables pero con un formato específico, con lo que se llama tipo de dato. De forma implícita o explícita, le indicamos al ordenador qué dato va a guardarse en la variable (Lenguajes tipados o no tipados). Estos tipos de datos pueden ser simples/primitivos o complejos.
+  </p>
+
+  <h3>primitivos</h3>
+  <p>
+    Son el tipo de dato básico en cualquier lenguaje de programación.
+
+    <dl>
+      <dt>Tipo de dato carácter.</dt>
+      <dd> Representa 1 solo caracter. En la memoria no se almacenan los caracteres directamente, si no que se almacena su secuencia de números equivalente en la tabla ASCII. Por ejemplo, el carácter 'c' minuscula, en la memoria se almacenaría como el 99, es decir, el valor 99 en la memoria es en realidad el caracter 'c' minúscula.
+        En casi todos los lenguajes de programación, un dato de tipo caracter se declara:
+        - variable = 'c', es decir, nombre de la variable y el valor caracter entre comillas simples. 
+      </dd>
+      <p>
+        Un caracter en la memoria ocupa 1 byte, 8 bits. Y así sucesivamente.
+      </p>
+
+      <dt>Tipo de dato string (cadena de texto)</dt>
+      <dd>Una string es un conjunto de caracteres. Este tipo de datos se almacenan en la memoria de manera consecutiva pero separada, cada caracter del string ocupa un espacio en la memoria. Y cada valor se almacena con su valor ASCII. Se declaran entre comillas dobles: string = "hola".
+        Sin embargo, la mayoría de lenguajes de programación, de manera implicita, no guarda solo el conjunto de caracteres, sino que le añade a la cadena de texto un caracter '0' al final del string, llamado Nil o Null. Esto ocurre porque los ordenadores saben cuando empieza una cadena de caracteres pero no cuando termina. De esta manera, el Nil delimita dicha cadena. El procesador, cuand lee la memoria, la lee de manera consecutiva y termina de leer el string cuando llega al 0.
+
+        string = "texto" + 0
+
+        Y cabe destacar también que las cadenas de texto realmente son una conveniencia, una simplificación de lo que en realidad es un array de caracteres (ampliado más adelante).
+      </dd>
+
+      <dt>Tipo de dato números enteros</dt>
+      <dd>Para representar numéros enteros o secuencias numéricas. Se daclaran de dos maneras: variable = '1' se utiliza para representar el caracter 1 y en la memoria se almacena mediantu su valor ASCII, que es el 49. Sin embargo, la declaración variable = 1, sin las comillas, representa literalmente el valor 1, hace referencia a un número en concreto, se almacena en la memoria como valor 1.</dd>
+
+      <dt>Tipos de datos de coma flotante (números decimales) Floating</dt>
+      <dd>Se declaran: variableF = 2.5
+        decimales=floats
+      </dd>
+
+      <p>
+        Los números se almacenan en forma de código binario.
+
+        Los numeros, por defecto, ocupan en la memoria entre 4 y 8 bytes (32 o 64 bits), dependiendo del lenguaje de programación, el tipo de procesador, etc.
+        Por ejemplo, el valor de un número de 32 bits en la memoria tendría la siguiente forma:
+          
+        00000000 00000000 00000000 00000000
+
+        De esta manera, organizado en octetos.
+
+        Se almacena contando desde la derecha del número. Cada posición del número equivale a una potencia de 2:
+
+        
+        Número ->   2sup7  2sup6  2sup5  2sup4  2sup3  2sup2  2sup1  2sup0
+        Posición -> 7      6      5      4      3      2      1      0
+
+        Respecto a la organización de los octetos, si observamos la tabla ASCII, vemos que está compuesta de 256 caracteres (De 0 a 255), es decir, el valor máximo de un caracter de la tabla ASCII es el 255. Ese es el valor máximo que se puede almacenar en una posición de memoria, 255, y resulta que si sumamos los valores de los números de cada octeto, nos da 255 valores, entonces, cada octeto ocupará como mucho 255 valores y, dicho muy a grandes rasgos, los números se partes en 4 cachos y se guardan en 4 partes de la memoria.
+
+        Los números flotantes se guardan de manera similar solo que una parte de la memoria se utiliza para la parte entera y otra para la parte decimal.
+
+        <!--No me quedó muy claro como se almacenan números en la memoria-->
+      </p>
+
+      <dt>Tipos de datos booleanos</dt>
+      <dd>Este tipo de dato no existe en todos los lenguajes de programación. Son datos que solo pueden tener dos valores. En algunos lenguajes se representan como variable = 0/1, en otros como variable = true/false y en otros variable = True/False.
+        Se almacenan en la memoria con un valor 0 o con un valor 1. 
+        Se utilizan para los flats de estado
+      </dd>
+    </dl>
+  </p>
+
+  <h4>Tips finales datos primitivos</h4>
+  <p>
+    <ul>
+      <li>DATO CARACTER. variable = 'a'. Valor de la variable entre comillas simples. Solo 1 caracter</li>
+      <li>STRING. variable = "abcd". Valor de la variable entre comillas dobles. Secuencia de caracteres.</li>
+      <li>DATO NÚMEROS ENTEROS. variable = 1234. Sin entrecomillar. Pueden ser positivos o negativos.</li>
+      <li>DATO NÚMEROS FLOTANTES (Floating). variableF = 2.5. Igual que los enteros.</li>
+      <li>DATOS BOOLEANOS. No existen en todos los lenguajes. Solo dos valores. 0/1, true/false o True/False.</li>
+    </ul>
+  </p>
+
+  <h3>Complejos</h3>
+  <p>A partir de los datos primitivos se generan los tipos de datos complejos.</p>
+
+  <dl>
+    <dt>Arrays</dt>
+    <dd>Colección o conjunto de un mismo tipo de dato. Se declara de las siguientes maneras (en casi todos los lenguajes se separan por comas):
+      - arrayChar = ['a', 'b', 'c'] - array de caracteres
+      - arrayString = ["hola", "adios"] - array de texto
+      - arrayNumero = [0, 1, 2, 3] - array de números
+      - arrayNumeroF = [1.1, 4.4, 3.5] - array de floats
+      - arrayArrays = [
+        [1, 2, 3]
+        [4, 5, 6]
+      ] - array de arrays. Dentro de un arrays de arrays, cada uno de los arrays sería una dimensión. En este caso, este array de arrays es bidimensional.
+
+      Los arrays se reprensentan en la memoria ocupando cada elemento del array de manera consecutiva un espacio de la memoria. Los arrays de arrays son más complejos, se ve más adelante.
+
+      Y respecto a lo que comentaba en el apartado de los strings, decía que los strings son relamente un array de caracteres simplificado porque quiere decir lo mismo string = "texto" que arrayChar = ['t', 'e', 'x', 't', 'o']. En la mayoría de los lenguajes se permite excribirlo de la primera manera por comodidad. 
+      </dd>
+
+      <dt>Tuplas</dt>
+      <dd>En cada lenguaje pueden decir una cosa distinta. Suele ser similar a un array pero en este caso los elementos son invariables / inmutables. Es una especie de array invariable. Maneras de representar tuplas en diferentes lenguajes:
+        tupla = (a=>1, b=>2, c=>3)
+        tupla = (a, b, c)
+      </dd>
+
+      <dt>Mapa asociativo, mapa, array asociativo</dt>
+      <dd>Tienen en su interior elementos compuestos formados por una clave asociada a un valor. Haciendo referencia a un array asociativo, le preguntamos por una clave y nos da su valor. Se representan e incluso se llaman diferente según el lenguaje de programación. Por ejemplo, en PHP, un array de capitales de paises se vería así:
+        arrayCapitalesPaises [
+         "clave" => "valor"
+         "españa" => "madrid"
+        ]
+
+      En Javascript y en Python, este mapa, o al menos algo muy parecido, se denomina Diccionario. Se vería:
+        arrayCapitalesPais = [
+          "Ucrania": "Kyiv"
+          "España": "Madrid"
+        ]
+
+        <dt>Objetos</dt>
+        <dd>Un elemento que en la lógica de nuestro programa intenta representar un objeto del mundo real, con sus propiedades y tal. Cada propiedad sería una variable. En pseudocódigo, se vería:
+          
+          Objeto:
+            Propiedades:
+             - Color: blanco
+             - Forma: rectangular
+
+        En Java, un objeto caja, por ejemplo, se vería:
+
+          class Caja {
+            String Color = "blanco";
+            String Forma = "rectangular";
+            int Largo = 20;
+          }
+
+        Los objetos, además de las propiedades, tienen métodos, que pueden alterar dichas propiedades. Un método del ejemplo anterior, podría ser "abrir tapa":
+
+          Objeto:
+            Propiedades:
+              - Color: blanco
+              - Forma: rectangular
+            Métodos:
+              - Abrir tapa
+              - Cerrar tapa
+        
+          Los métodos, por ejemplo en Java, se definirían:
+
+          class Caja {
+            String Color = "blanco";
+            String Forma = "rectangular";
+            int Largo = 20;
+
+            abrirTapa(){}
+            cerrarTapa(){}
+          }
+          Realmente esto último es una clase, y de aquí derivaría el objeto.
+        </dd>  
+      </dl>
+  </dl>
+</body>
+</html>

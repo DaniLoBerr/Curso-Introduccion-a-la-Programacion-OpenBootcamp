@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Herencia, polimorfismo e interfaces</h1>
+  <h2>Tipos de herencia</h2>
+  <h3>Herencia simple</h3>
+  <p>
+    Consiste en la transmisión de las propiedades y los métodos de una clase a otra. La que transmite se llama super clase o clase madre o clase principal o clase base, etc, y la que hereda se denomina clase hija. La que hereda contiene implicitamente las propiedades y métodos de su clase madre además de los suyos propios.
+  </p>
+  <code>
+    Clase Vehiculo
+      privada velocidadMaxima;
+      privada tipoGasolina;
+
+      funcion diHola()
+        imprime "Hola"
+
+    Clase Coche hereda de Vehiculo
+      (heredada) privada velocidadMaxima; <!--No aparecería visualmente pero implícitamente la podríamos llamar a través de esta clase-->
+      (heredada) privada tipoGasolina;
+      numeroDePuertas; <!--Propiedad propia de esta clase pero no de su madre-->
+
+      (heredada) funcion diHola()
+        imprime "Hola"
+      funcion setternumeroDePuertas (integer puertas)
+        esta_clase.numeroDePuertas = puertas
+      funcion integer getternumeroDePuertas() <!--getter y setter propios de esta clase hija-->
+        devuelve esta_clase.numeroDePuertas
+
+    Clase Coupe hereda de Coche <!--Clase hija de la clase hija-->
+      (heredada) privada velocidadMaxima;
+      (heredada) privada tipoGasolina;
+      (heredada) numeroDePuertas;
+
+      (heredada) funcion diHola()
+        imprime "Hola"
+      (heredada) funcion setternumeroDePuertas (integer puertas)
+        esta_clase.numeroDePuertas = puertas
+      (heredada) funcion integer getternumeroDePuertas() 
+        devuelve esta_clase.numeroDePuertas
+  </code>
+  <p>
+    No conviene volverse loco con las herencias, un tercer/cuarto nivel sería más o menos lo máximo recomendado dependiendo de los casos (herencia multinivel).
+  </p>
+  <p>
+    No todos los lenguajes soportan las clases y las heredaciones, esto es más para lenguajes orientados puramente a objetos. Hay otros lenguajes que pueden utilizar objetos pero realizan las heredaciones de diferentes maneras (por ejemplo, Go lo hace con composiciones de tipos). Pero el concepto de las herencias es el mismo.
+  </p>
+  <p>
+    Igual que podemos hacer que unas clases hereden de otras, también podemos hacer que de una clase no se pueda heredar.
+  </p>
+  <code>
+    Clase Vehiculo
+      privada velocidadMaxima;
+      privada tipoGasolina;
+
+      funcion diHola()
+      imprime "Hola"
+    
+    Clase Coche hereda de Vehiculo y no quiero que puedan heredar de mi 
+  </code>
+
+  <h3>Abstracción (Segunda parte de lo del tema anterior)</h3>
+  <p>
+    Como habíamos visto, una clase abstracta no se puede instanciar, pero si se puede instanciar una clase hija de una clase abstracta. Si queremos utilizar los métodos de una super clase pero querermos que en cada clase hija el resultado sea diferente, debemos abstraer la clase y los métodos. En este caso, al abstraer los métodos, dejaríamos simplemente los prototipos de estos en la clase madre y después en cada clase hija los implementaríamos de la manera que quisieramos (implementación parcial de la clase). Dicho de otra manera, si nosotros queremos que un método de una super clase abstracta haga ciertas cosas en una clase hija y queremos que haga otras en otra clase hija, lo que debemos hacer es abstraer esos métodos. De esta manera, la superclase nos implementa a medias unos métodos, nos da los prototipos pero luego nostros en nuestra respectivas clases hijas debemos implementar esos prototipos con sus respectivas características distintas.
+  </p>
+  <p>
+    Otra explicación: Las clases abstractas sirven para implementar clases parcialmente. Abstrayendo los métodos de una clase madre, lo que hacemos es obligar a las clases hijas a implementar estos métodos, programar parcialmente qué deben hacer esas clases hijas y luego ya cada una programará el cómo lo hace.
+  </p>
+  <p>
+    Lós métodos abstractos de una clase madre le dice qué deben hacer a las clases hijas pero no el cómo.
+  </p>
+
+  <h3>Herencia múltiple</h3>
+  <p>
+    Consiste en que una clase hereda de dos o más clases madre. 
+  </p>
+  <code>
+    clase Vehiculo
+
+    clase Motor
+
+    clase Coche hereda de Vehículo y de Motor
+  </code>
+  <p>
+    La herencia múltiple en Java se realiza a través de interfaces.
+  </p>
+
+  <h3>Herencia jerárquica</h3>
+  <p>
+    Herencia tipo árbol: de una clase base, heredan dos o más clases, de cada una de ellas heredan dos o más clases, etc.
+  </p>
+  <code>
+    clase a
+      clase b hereda de a
+        clase 1 hereda de b
+        clase 2 hereda de b
+      clase c hereda de a
+        clase coche hereda de c
+        clase moto hereda de c
+      clase d hereda de a
+        clase perro hereda de d
+        clase gato hereda de d
+  </code>
+
+  <h3>Herencia híbrida</h3>
+  <p>
+    Es una mezcla entre las herencias simple y múltiple en la que una clase madre deriva en dos clases hijas y estas dos clases hijas derivan en una clase (rombo).
+  </p>
+  <code>
+    clase a
+      clase b hereda de a
+      clase c hereda de a
+    clase d hereda de b y de c
+  </code>
+
+  <h2>Polimorfismo</h2>
+  <p>
+    Consiste en que una clase hija implementa un método de una clase madre pero para que haga una cosa diferente. Esto hace que si se instancia la clase madre el método hará una cosa y si se instancia la clase hija este mismo método hará otra. El resto de clases hijas a partir de esta heredarán el último método. Se dice que se hace un "override" del método en la clase hija, sobreescribir la función y que el contenido sea diferente.
+  </p>
+  <code>
+    clase Vehículo
+      funcion diHola()
+        imprime "diHola"
+   
+    clase coche hereda de Vehiculo
+      (heredada pero la sobreescribo)funcion diHola()
+        imprime "holaDi"
+  </code>
+  <p>
+    Los lenguajes no solo tienen polimorfismo a nivel de métodos de clase, algunos de ellos tienen también polimorfismo a nivel de función, es decir, se puede hacer override de un método en una misma clase y que esta función devuelva diferentes resultados o acepte parámetros diferentes o haciendo cosas diferentes en general. Función polimórfica.
+  </p>
+  <code>
+    clase equis
+      funcion entero sumaNumeros (entero a, entero b)
+        devuelve a+b
+      funcion flotante sumaNumeros (flotante a, flotante b)
+        devuelve a+b
+  </code>
+
+  <h2>Interfaces</h2>
+  <p>
+    Parecido a las clases abstractas pero a diferencia de ellas, no implementan ninguna función, simplemente no dice o que nosostros debemos implementar. Cuando yo cree una clase, tengo que implementar los métodos que esa interface ha definido. Las interfaces se utilizan cuando se quieren crear unas clases que tengan unos métodos previamente definidos.
+  </p>
+  <code>
+    interface Coche
+      funcion acelerar (numero cuantaVelocidad)
+      funcion frenar (numero CuantaVelocidad)
+  </code>
+  <p>
+    En Java incluso se pueden implementar propiedades a través de una interface, no solo métodos.
+    En Go por ejemplo, la interface no es tan explícito, se hace por debajo.
+  </p>
+
+</body>
+</html>

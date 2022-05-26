@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Tema 1 - Programación: Variables y constantes</h1>
+  
+  <h2>Historia de los lenguajes</h2>
+  <p>
+    1940. Instrucciones mnemotécnicas.
+    1950 y 1960. Fortran, Lisp y Cobol. Cobol: En bancos, aseguradoras, sistemas aeroespaciales...
+    BCPL. Lenguaje precursor del lenguaje C.
+    Lenguaje C: Lenguaje en el que están escritos la mayoría de Sistemas Operativos, sobre todo los kernels de los mismos. Es un lenguaje de bajo y de alto nivel.
+    1970. Lenguaje C definitivo. Lenguaje Pascal.     
+
+    1980. Lenguaje de nicho ADA. Utilizado en defensa y sistemas aeroespaciales.
+          Lenguaje de nicho Perl. En UNIX y en Linux, ya no se utiliza tanto, se utilizaba porque simplificaba mucho el trabajar con ficheros de texto.
+          Lenguaje TCL.
+    1990s. Llegada de internet. Los lenguajes combinan el porpósito general y el nicho. JAVA. Inicialmente, se creo para utilizar en sistemas embebidos, es decir, sistemas pequeños que se ejecutan en procesadores pequeños, con pocos recursos, con poca memoria, para tareas específicas (lavadoras, neveras, etc). Luego, pa tó.
+         Python. Machine learning, visión por computadora, inteligencia artificial, prototipar.
+         PHP. Mucho para backend.
+         Ruby.
+         Lua. Mucho para motores de videojuegos.
+    2000s. Actionscript. Ya no se utiliza, estaba orientado a animaciones 2D, dibujos y web (banners). Lenguaje utilizado para las aplicaciones Flash. Dio pie a los lenguajes orientados a web, a la cohesión de los futuros lenguajes HTML5, CSS y JS.
+           C#/.NET. Lenguaje/ framework muy utilizado en entornos windows.
+           Go. Mucho para backend.
+           Swift. Aplicaciones iOS.
+           Derivados de Java: Scala y cerenyou o celyu
+           Scratch. Lenguaje para aprender a programar, muy intuitivo, para niños.
+  </p>
+  
+  <h2>Clasificaciones de los lenguajes</h2>
+  <p>
+    Lenguajes de propósito general (todos los anteriores). Lenguajes utilizados para múltiples tareas.
+    Lenguajes de nicho. Lenguajes utilizados para pequeñas tareas o tareas específicas.
+  </p>
+
+  <p>
+    Compilado. Se genera un programa que el procesador ejecuta directamente a través del SO. Compilador convierte el código en lenguaje binario. Programa nativo para una arquitectura de procesador concreta. Más rápidos. C, GO, ENSAMBLADOR.
+    Interpretado. Se ejecuta sobre el interprete. Más portables. JAVA, PYTHON, PERL, PHP.
+    Híbridos. EL interprete compila a lenguaje nativo tramos del código según le haga falta. Compilador JIT (Just In Time)
+
+    (Móvil arquitectura ARM)
+  </p>
+
+  <p>
+    Tipados. Lenguajes en los que se pueden almacenar datos pero en los que se tiene que especificar qué tipo de dato es: un número, una cadena de texto, un valor numérico, etc. C, GO, JAVA. 
+    No tipados. El compilador/intérprete deduce qué tipo de dato es. PHP, JS
+  </p>
+
+  <h2>Tipos de aplicaciones</h2>
+  <p>
+    Aplicaciones web. Capa frontend (HTML, CSS, JS) parte gráfica, capa backend (Casi cualquier lenguaje, uno o varios), parte información. Funcionamiento: peticiones del frontend al backend (modelo cliente-servidor).
+    
+    Aplicaciones de escritorio. Parecidas a las web. Desarrolladas para mostrar la mayor cantidad de información posible. También frontend y backend.
+
+    Aplicaciones móviles. Cambia la lógica de programación. Se centra en el modelo Vista: se ve una vista con una serie de acciones y se va cambiando a otras vistas. También frontend y backend.
+  </p>
+  <p>
+    Aplicaciones iOS=Swift
+    Aplicaciones windows=.net
+    Aplicaciones Android=Java/Kotlin
+    Aplicaciones Linux=C con librería GDK para entorno gráfico GNOME o C++ para KD con librería CUTE
+  </p>
+  <p>
+    modelo cliente-servidor: El cliente es la aplicación que no contiene ninguna información, simplemente muestra la parte visual, y el servidor es un otro ordenador o un servidor remoto que proporciona dicha información. El cliente hace unas peticiones al servidor pidiéndole cierta información y este le envía las respuestas. Normalmente se realiza todo a través del protocolo HTTP, mediante el cual se accede a una API. API: conjunto de funciones, funciona como mediadora, recibe la petición del cliente, esta la analiza y, si está todo correcto, devuelven la información según lo pedido. API rest, lo más habitual. 
+      Se pueden crear APIs propias pero existen también unas librerías externas para cada lenguaje que nos abstraen de todo esto.
+  </p>
+
+  <h2>Memoria</h2>
+  <p>
+    La memoria es finita
+
+    La memoria es dinámica, los datos varían de posiciones de memoria.
+
+    En la memoria almacenamos valores
+
+    La memoria se organiza en torno a millones de posiciones de memoria
+
+    A cada posición se le asigna un nombre humano llamada variable. 
+
+    A cada variable se le da un valor, un valor que puede ir cambiando. Cuando se cambia el valor de una variable, el compilador busca qué posición de memoria está asociada con esa variable y le cambia el valor.
+
+    Cada variable se puede clasificar como variable, el valor que contiene puede variar o constante, el valor que contiene es invariable.
+  </p>
+</body>
+</html>

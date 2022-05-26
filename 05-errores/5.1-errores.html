@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Errores comunes en programadores junior</h1>
+  <h2>Nombrado de variables</h2>
+  <p>
+    No nombrar bien las variables. Hay que nombrar a las variables con el nombre para lo que las vamos a utilizar o con una abreviatura aceptada por la industria. El objetivo es hacer que el código sea lo más inteligible posible y que se necesiten las menores explicaciones posibles.
+    Ejemplo: Si vamos a utilizar una variable para un contador, está bien utilizar la palabra contador, y no variables metasintácticas del tipo foo, bar o foobar que se utilizan como marcadores de posición, diseñadas para ser sustituidas antes de su uso en código fuente funcional.
+
+    EXCEPCIÓN. Utilizando bucles for, no es una mala práctica utilizar variables con el nombre i, j, k. Porque es una práctica común en la insdustria.
+    Ejemplo: La variable i, que viene de index, se suele utilizar para representar la posición en la que nos encontramos en el bucle del recorrido de un array.
+    Otro ejemplo. Variable temp para variables temporales.
+  </p>
+
+  <h3>No utilizar comentarios</h3>
+  <p>
+    Es decir, no explicar lo que hacemos o la intención de lo que hacemos. No hace falta explicar las cosas evidentes, pero sí para qué estamos escribiéndo ciertas líneas o para qué estamos utilizando ciertos bloques de código.
+    CONSEJO. Utilizar comentarios pensando en explicarnos cosas a nuestro yo del futuro.
+  </p>
+  <p>
+    A veces se dan situaciones en las que es necesario introducir ciertos pequeños fallos en el código de un programa, llamados hacks, para que el programa funcione correctamente. Si esto por ejemplo no lo comentamos y otro desarrollador lo ve, seguramente lo corrija y afecte al programa.
+  </p>
+
+  <h3>No mantener la coherencia del código</h3>
+  <p>
+    Normalmente, se suele seguir una línea de estilo o un formato a la hora de escribir código. Está mal ir cambiando la forma en la que escribimos las cosas (sagrías, posiciones de las cosas,etc). Es una buena práctica la consistencia.
+  </p>
+  <p>Normalmente, cada lenguaje tiene su estilo (Excepto C que tiene muchos). Incluso otros como Go o Rust tienen una herramienta (gofmt) a la que se le pasa un fichero y cambia el formato completo del código del mismo. Incluso los IDEs realizan funciones parecidas.</p>
+
+  <h3>No hacer copias de seguridad</h3>
+  <p>
+    Importante utilizar controles de versiones y copias de seguridad en diferentes discos duros.
+  </p>
+
+  <h3>Expresiones cortas / largas de los lenguajes</h3>
+  <p>
+    Es una buena práctica utilizar las expresiones simples o más cortas a la hora de picar código pero es muy importante también saber y entender de donde vienen esas expresiones, conocer su forma larga. El objetivo es hacer el código más legible y eficiente.
+  </p>
+
+  <h3>Depurar utilizando prints</h3>
+  <p>
+    No es una buena práctica depurar el código, comprobar posibles errores, utilizando el print para imprimir en pantalla lo que vamos haciendo. Para eso existe una herramienta el depurados o debugger.
+  </p>
+
+  <h3>Crear funciones demasiado largas</h3>
+  <p>
+    Entre otros cometidos, las funciones se crean para simplificar código o para tener un cometido identificable (no crear funciones porque si). Y otra cosa importante es nombrar bien las funciones, que su cometido cumpla lo que dice su nombre.
+  </p>
+
+  <h3>Pérdidas en los tipos de datos</h3>
+  <p>
+    Se puede perder precisión en el programa si se hacen conversiones de datos de mala manera. La conversión de tipos de datos (un tipo en otro tipo) se hace de la siguiente manera (Ejemplo escrito en Java en proyecto de IntelliJ). Hay que hacerlo bien y estar atento porque en el ejemplo del proyecto, se ve que al convertir una variable de tipo double en una de tipo int, se pierde precisión y puede afectar al programa. A esto se le llama hacer un Cast.
+    Una solución es cambiar el tipo de dato que pide la función, en vez de convertir el tipo de datos que estamos dando.
+  </p>
+
+  <h3>Out of Bounds</h3>
+  <p>
+    Dentro de este tipo de errores, el más habitual es el "Off-by-one". Este error consiste en que, cuando tenemos un array, a veces no nos damos cuenta de que en informática la posición de partida siempre es 0, es decir, la primera posición de los elementos de un array es la posición 0, por lo tanto, en la posición 1 se encontrará el segundo elemento y así sucesivamente. Entonces, este error off-by-one se suele producir porque le pedimos al programa que haga lo que sea con la posición 5 de un array de cinco elementos (por ejemplo) y el programa nos da error porque no exite dicha posición, no equivocamos por 1, nos pasamos de largo por una posición. Decimos lo de off by one porque nos solemos equivocar por 1.
+  </p>
+
+  <h3>Overflow</h3>
+  <p>
+    Los tipos de datos tienen unos tamaños específicos, y cuyos valores equivalentes en la tabla ASCII ocupan como máximo 255 en cada posición de memoria (se reflejan desde el -128 al 127). Entonces si nosotros intentamos guardar en la memoria una valor más alto de 127, incurriremos en el overflow. En principio el IDE no nos dejaría hacerlo porque se daría cuenta del error, pero si lograramos engañarlo y,por ejemplo, intentásemos sumar 5 al 127, como 127 es el máximo, el programa volvería a empezar a contar desde el -128 y se sumaría el excedente desde ese 128. En este caso, 127 + 5 nos daría como resultado -124.
+
+    Es importante indicar el tipo de dato que se va a almacenar por este tipo de cosas porque por ejemplo si intentáramos guardar en un tipo de dato byte un número muy alto de resultados de una consulta a una base de datos, no nos cabría. (En el ejemplo del proyecto en intellij probamos esto del overflow con una variable tipo byte).
+
+    Es importante la optimización del código pensando en la optimización de la memoria.
+  </p>
+</body>
+</html>

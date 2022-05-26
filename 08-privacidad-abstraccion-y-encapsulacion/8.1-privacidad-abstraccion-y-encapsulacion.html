@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h6>En anteriores capítulos...</h6>
+  <p>
+    Hemos aprendido la instanciación: Hemos instanciado una clase creando un nuevo objeto y al objeto le hemos dado una serie de propiedades en el constructor. Después, hemos visto que podemos sobrecargar el constructor para que estas clases se inicializaran con ciertos valores en su propiedades.
+  </p>
+  <h1>Privacidad, abstracción y encapsulación</h1>
+  <h2>Propiedades pública y privada</h2>
+  <p>
+    Cuando definimos una clase, esta clase tiene una serie de propiedades. Las propiedades pueden ser de 3 tipos: privadas, públicas y protegidas, pero nos centramos en las dos primeras:
+
+    - Propiedad privada, solo se puede usar dentro de la clase a la que pertenece.
+    - Propiedad pública, se puede utilizar en cualquier parte del programa, se puede acceder a ella desde fuera de la clase.
+  </p>
+  <code class="pseudocodigo">
+    Programa principal
+      Miclase unaclase = nueva instancia de Miclase
+
+      unaclase.propiedad1 = valor
+      imprime unaclase.propiedad2
+    
+    clase Miclase
+      pública propiedad1; <!--Ejemplos de propiedades públicas y privadas -->
+      privada propiedad2;
+
+      metodo1();
+      metodo2();
+  </code>
+
+  <h2>Encapsulación</h2>
+  <p>
+    Consiste en jugar con los tipos públicos y privados de forma que desde la clase los manipule y desde fuera de la clase los pueda utilizar. Para encapsular, lo que hacemos es declarar como privadas las propiedades de la clase y luego creamos 2 funciones por cada una de las propiedades (getters y setters): La tarea de los getters es darnos el valor de la propiedad de la clase cuando invocamos a la funcion (get=conseguir) y la tarea de los setters es modificar la propiedad de la clase cuando invocamos a la función y le damos un parámetro (set=establecer). De esta manera, solo podré utilizar estas propiedades a través de las funciones.
+  </p>
+  <code class="pseudocodigo">
+    Programa principal
+      Miclase unaclase Instancia de miclase
+
+      unaclase.propiedad1 = valor
+      imprime unaclase.propiedad2
+    
+    clase Miclase
+      privada propiedad1;
+      privada propiedad2;
+
+      método setterpropiedad1(var valor) <!--El único cometido de esta función es asignar el valor que le asignamos como parámetro a la propiedad 1 de la clase-->
+        esta_clase.propiedad1 = valor
+
+      método var getterpropiedad1();
+        devuelve el valor de esta_clase.propiedad1
+  </code>
+  <p>
+    Este concepto de encapsulación getter y setter es común a casi todos los lenguajes de programación. Aunque por ejemplo, en PHP, existen unos métodos que implementan esto directamente: "magic metods". Están pseudo prefabricados.
+  </p>
+  <p>
+    Algunos IDEs son capaces de generar automáticamente los getters y los setters.
+  </p>
+  <p>
+    Hay un caso especial en esto de los getters y los setters. Cuando tenemos un tipo de dato booleano, el setter es exactamente igual pero a la función getter se la debe llamar "isNombreDeLaPropiedad" 
+  </p>
+
+  <h3>Usos de la encapsulación</h3>
+  <p>
+    - Programación multihilo. Crear programas que se ejecuten a la vez en varios cores del procesador (thread?). Simplemente por comentar, en la programación multihilo ocurre que cuando dos o más hilos acceden a una varibale privada, el programa da un error, no se puede estar cambiando en dos hilos la misma propiedad a la vez, y se hace necesrio implementar una cosa llamada bloqueo mediante invocaciones del setter.
+    - Estados de las clases... ?
+  </p>
+
+  <h2>Abstracción</h2>
+  <p>
+    Una abstracción puede definirse como: las características especificas de un objeto, aquellas que lo distinguen de los demás tipos de objetos de una misma clase.
+  </p>
+  <p>
+    (Se profundizará más en esto de la abstracción en el tema de las herencias).
+    Consiste en implementar parte de una clase y dejar la otra parte a su libre albedrío. Una clase o método abstracto es igual que una clase normal y corriente pero con un "calificador" (simplemente una clase que pone "abstract" delante). Tiene sus propiedades (públicas o privadas) y métodos normales y también puede constenter métodos abstractos, los cuales no pueden tener cuerpo, simplemente se deja el proptotipo abstracto de la función para cuando derivemos la clase, utilicemos estos métodos en la nueva clase derivada.
+    Una función abstracta quiere decir que el lenguaje subyacente que estemos utilizando puede implementar el código de algunas funciones y pueden decirnos que esta función que es abstracta la tenga que implementar una clase hija, es decir, implemmentan la funcionalidad de forma parcial y es el programador el que posteriormente tendra que implementar el resto de funciones. Nos darán unas si otra no. <!--Ni puta idea hermano, a ver cuando llegue a herencias si entiendo esto-->
+    Las clases abstractas no se pueden usar directamente, tienen que ser heredadas.
+  </p>
+  <p>
+    Una clase abstracta es una clase en la que nos dan una serie de funciones ya programadas y nos dicen que tenemos que programar otra serie de funciones nosotros mismos.
+    Nos crearían el getter y el setter de una propiedad y el getter y setter abstractos de otra propiedad que sería diferente para cada objeto.
+  </p>
+  <code>
+  Programa principal
+    Miclase unaclase Instancia de miclase
+
+    unaclase.propiedad1 = valor
+    imprime unaclase.propiedad2
+  
+  clase abstracta Miclase
+    privada propiedad1;
+    privada propiedad2;
+
+    método setterpropiedad1(var valor) 
+      esta_clase.propiedad1 = valor
+
+    método var getterpropiedad1();
+      devuelve el valor de esta_clase.propiedad1
+
+    método abstracto var getterpropiedad2(); <!--Ejemplo de función abstracta en una clase abstracta. Este tipo de funciones no tienen cuerpo-->
+  </code>
+  <p>
+    Esto quiere decir que la clase grande, la super clase, la clase abstracta, ya nos está implementando una función, la función setterpropiedad1, porque esto va a ser común a todos los objetos de Miclase. SIm embargo, también nos dice que nosotros como programadores debemos implementar una función extra que se tiene que llamar getter propiedad2 porque, aunque el setter propiedad1 es común, el getter propiedad2 no lo va a ser. Después con el tema de las herencias veremos que en el cuerpo de la función abstracta hay que devolver algo. Este devolver algo va a ser diferente depende del objet y se implementará utilizando herencias. 
+  </p>
+  <p>
+    Cuando vemos una clase abstracta, ya sabemos que nos van a dar unos métodos ya hechos (los getters y setters que hemos estado viendo) y unos métodos que tendremos que no están hechos y que tendremos que implementar (las funciones abstractas) que nos van a decir que cuando yo quiera utilzar esta clase abstracta, voy a tener que derivarla (herencia) y una vez derivada, en mi nueva clase tengo que implementar si o si estas funciones.
+  </p>
+  <p>
+    En una clase abstracta, podremos utilizar las funciones getter y setter sin tener que programar nada y tendremos otras funciones abstractas que no podremos utilizar y que tendremos que programar en nuestra nueva clase derivada de esta.
+  </p>
+  <p>
+    Una clase normal contiene todo el código implementado de esa clase. Ua clase abstracta contiene parte del codigo y otra parte del codigo se tendrá que programar adicionalmente.
+  </p>
+  <p>
+    Clases abstractas = clases parciales (se pueden llamar así también)
+  </p>
+</body>
+</html>

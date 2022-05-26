@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    
+    <h1>Estructuras/Sentencias de control</h1>
+    <p>
+      Serie de órdenes/instrucciones que permiten modificar el flujo de ejecución de un programa. Pueden ser secuenciales, iterativas o de control avanzadas. Se basan en la utilización de condiciones para comparar situaciones y que el programa ejecute una u otra opción según la situación. Cuando se evalua una condición, solo se pueden dar dos resultados (lógica booleana).
+
+      Con las estructuras de control se puede:
+
+      - De acuerdo con una condición, ejecutar un grupo u otro de sentencias (If-Then-Else)
+      - De acuerdo con el valor de una variable, ejecutar un grupo u otro de sentencias (Switch-Case)
+      - Ejecutar un grupo de sentencias solo cuando se cumpla una condición (Do-While)
+      - Ejecutar un grupo de sentencias hasta que se cumpla una condición (Do-Until)
+      - Ejecutar un grupo de sentencias un número determinado de veces (For-Next)
+    </p>
+    
+    <h2>Tipos de condiciones</h2>
+    <ul>
+      <li>
+        Condiciones lógicas
+        <dl>
+          <dt>Y</dt>
+          <dd>Comparación en la que se deben cumplir dos o más situaciones para que las ordenes se ejecuten. Habitualmente, en informática, se representa como &&.</dd>
+
+          <dt>O</dt>
+          <dd>Comparación en la que se debe cumplir o una u otra o ninguna de las situaciones para que las ordenes se ejecuten. Habitualmente, en informática, se representa como ||.</dd>
+        </dl>
+      </li>
+      <li>
+        Condiciones comparativas
+        <ul>
+          <li>Mayor que (>)</li>
+          <li>Menor que (<)</li>
+          <li>Mayor o igual que (>=)</li>
+          <li>Menor o igual que (<=)</li>
+          <li>Igual a (==)</li>
+          <li>Distinto de (!=)</li>
+        </ul>
+      </li>
+    </ul>
+    <p>
+      <!--Ejemplos Pseudocódigo-->
+
+      40 mayor que 30 => cierto
+      40 menor que 30 => falso
+
+      (40 mayor que 30) y (30 menor que 50) => cierto y cierto => cierto
+      (40 mayor que 30) o (30 mayor que 50) => cierto o falso => cierto
+      <!--Lógica en informática: si cierto y/o falso = cierto-->
+      <!--Mirar tablas de la verdad-->
+    </p>
+    
+    <h2>Estructura de control de selección</h2>
+    <h3>Condicional simple: if / else if / else</h3>
+    <p>Si se cumple la condición o las condiciones (if), se ejecutan todas las acciones indicadas en el cuerpo de la sentencia. En caso contrario, si se cumple otra condición (else if), se ejecutan las acciones contenidas en esa sentencia. En cualquier otro caso (else), si no se ha cumplido ninguna de las condiciones anteriores, se ejecutarán las de esta última sentencia, denominada fallback. El fallback es la acción última por defecto, la acción que se tiene que hacer porque, por circunstancias del código, se debe realizar alguna acción.</p>
+    <p>No es necesario escribir toda la sintaxis completa, se puede utilizar solo un if por ejemplo. Lo importante es saber que, a nivel lógico, se puede tener una condición, y esa condición se puede evaluar de forma consecutiva: si pasa esto, haz esto; si pasa esto otro, haz esto otro; y, en cualquier otro caso, haz esto último.</p>
+    <p>if es una sentencia imperativa</p>
+    <p>Los if están en casi todos los lenguajes de programación.</p>
+
+      <!--Ejemplos Pseudocódigo-->
+    <code>
+      Var Estacion = "verano" <!--variable declarada con la que trabajar-->
+      Var Temperatura = 21
+
+      Si estacion igual a invierno, entonces: <!--Declaración de la condición if respecto a la variable-->
+        beber_sopa() <!--acciones a ejecutar si se cumple la condición-->
+        taparse_con_la_manta()
+
+      En caso contrario, si (estacion igual a primavera) y (temperatura menor o igual que 20), entonces: <!--Declaración de la condición else if ("elif" en algunos)--> <!--Declaración de dos condiciones-->
+        ir_en_manga_corta()
+        ir_al_parque()
+
+      En caso contrario, entonces: <!--Declaración de la condición else-->
+        ir_a_la_playa()
+    </code>
+
+
+    <h2>Estructuras de control iterativas o bucles</h2>
+    <ul>
+      <li>while</li>
+      <li>do while</li>
+      <li>for</li>
+      <li>switch</li>
+    </ul>
+    <p>
+      Un bucle en programación es un fragmento de código que se va a ejecutar repetidamente mientras se cumpla cierta condición. Una interación es una de las repeticiones del bucle.
+    </p>
+
+    <h3>Bucle while</h3>
+    <p>
+      Este es un bucle tipo "mientras", mientras se cumpla cierta condición, se ejecutarán las acciones contenidas en el bucle. Constantemente se está verificando si se cunple la condición para ejecutarse. Ejemplo de psudocódigo:
+      <code>
+        Var contador = 20
+
+        Mientas (contador mayor que 0), entonces:
+          Resta 5 al contador
+      </code>
+    </p>
+    <p>
+      Curiosidad: El lenguaje "GO" no tiene esta sentencia.
+    </p>
+
+    <h3>Bucle do while</h3>
+    <p>
+      Este bucle es parecido al while pero con la diferencia de que en el while no siempre se cumplen las acciones de la sentencia, se realizan mientras se cumpla la condición; pero, en los bucles do while, primero se ejecuta la acción y depués se analiza la condición para ver si se ha de realizar más veces. La acción contenida en la sentencia se ejecuta, como poco, una vez.
+      <code>
+        Var contador = 10
+
+        Haz
+          Resta uno al contador
+        Mientras (contador sea mayor que 10)
+      </code>
+    </p>
+    <p>
+      Pocos lenguajes tienen esta estructura porque realmente se podría hacer lo mismo con un while pero colocando el cuerpo de la sentencia fuera, es decir:
+      <code>
+        Var contador = 20
+
+        Resta 5 al contador
+        mientras (contador mayor que 0) <!--No estoy seguro de que este párrafo esté del todo bien-->
+      </code>
+    </p>
+
+    <h3>Bucle for</h3>
+    <p>
+      Es una especie de mezcla de todos los anteriores. Consta de 3 partes: inicialización, comparación y acción. Las sentencias de este tipo funcionan de la siguiente manera: Mientras se cumpla la parte de la inicialización, si se produce la parte de la comparación, realiza las acciones que se encuentran contenidas dentro de la sentencia y después ejecuta la parte de la acción. En algunos lenguajes las tres son obligatorias de indicar, en algunos ninguna.
+      <code>
+       para (var contador = 10 <!--inicialización-->; contador mayor que 0 <!--comparación-->; resta uno al contador <!--acción-->)
+          imprime el valor de la variable contador <!--Contenido de la sentencia-->
+      </code>
+
+      Lo que hace esta sentencia del ejemplo es que "mientras que la variable contador sea igual a 10, si la variable contador es mayor que 0, imprime el valor de la variable contador y resta uno a la variable contador". Es importante saber eso, que la parte de la acción se ejecuta después de ejecutarse el código contenido en el cuerpo de la sentencia.
+    </p>
+    <p>
+      Normalmente, los for se utilizan cuando se quieren recorrer arrays o tipos de datos compuestos, mientras que los while se suelen utilizar para comparaciones cierto/falso. Digamos que el while es nada más que la parte de la comparación del for. Ejemplos en pseudocódigo de esto: de un while y de un for:
+      <code>
+        var temperatura = 14;
+        mientras (temperatura menor que 15)
+          poner_abrigo
+      </code>
+      <code>
+        <!--Array-->
+        var valores = |10|20|30|40|50| <!--Array de 5 elementos, 5 posiciones = |0|1|2|3|4|-->
+
+        para (posicion_en_array=0; posicion_e_array menor que longitud_del_array; posicion igual a posicion mas uno)
+          imprime el valor de la posicion actual en el array
+      </code>
+    </p>
+    <p>
+      En los bucles, es habitual encontrarse la variable "i", que es la que se suele utilizar para indicar la posición actual en la que nos encontramos dentro del bucle. Es una convención. (i viene de index, índice).
+      (El valores.length nos indica cual es la longitud del array (propio de Java)).
+    </p>
+
+    <h3>Bucle swicht</h3>
+    <p>
+      Interruptor. Parecido al if. Bucle tipo "discierne" que se aplica sobre una condición. La diferencia entre usar un if/else if/else o un swicht depende un poco del gusto o de la guía de estilo. El profesor en este caso utiliza utiliza un switch cuando necesita utilizar más de dos else if, aunque hay que tener en cuenta que a veces no se pueden utilizar muchas comparaciones en un bucle switch. Es un bucle especialito.
+    </p>
+    <p>
+      Si utilizamos un bucle switch y se cumple la primera condición del mismo, pasaría una cosa en la mayoría de los lenguajes de programación que tienen la funcionalidad de switch, y es que se ejecutarían todas las acciones de todos los casos hasta el final del bucle. Para controlar esto, es necesario utilizar la palabra "break" (en Java, creo), que es una pabalabra reservada, después de cada caso, para romper la ejecución. Después del por defecto no haría falta. Con este bucle, no se realizaría ninguna acción de ningún caso hasta que se cumpliera la condición de alguno; y, a partir de él, se realizarían todas las acciones hasta el final del bucle si no se rompe el flujo.
+      <!--En el archivo de ejemplos de java, dejo un ejemplo de switch en el que no es necesario escribir un break después de cada case-->
+    </p>
+    <code>
+      Var estacion = "verano"
+
+      discierne (estacion)
+        caso "verano"
+          imprime "es verano"
+          rompe bucle
+
+        caso "invierno"
+          imprime "es invierno"
+          rompe bucle
+
+        por defecto
+          imprime "var estacion"
+
+    </code>
+  </body>
+</html>

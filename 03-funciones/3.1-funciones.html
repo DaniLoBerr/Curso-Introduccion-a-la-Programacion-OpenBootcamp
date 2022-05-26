@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1>Funciones</h1>
+  <p>
+    Es una parte del código de nuestro programa que lo que hace es recibir una serie de valores, opera con ellos y nos devuelve otro valor. Su función es evitar repetir código. Dentro de una función, puede ir cualquier parte del lenguaje, cualquier sintaxis. En un programa informático, se crea una función cuando tenemos que repetir varias veces una misma tarea, cuando tenemos que escribir varias veces el código de esa tarea. Cuando se quiere repetir varias veces el mismo código, se crea una función, se escribe el código y para utilizar en diferentes partes del programa se invoca a esa función, lo cual nos permite que, si queremos corregir un error en el código o cambiarlo, esos cambios se realizarán en todas las partes donde hayamos utilizado la función a la vez.
+    Otra de las funciones de las funciones es simplificar el código, reducir la cantidad de líneas de código escritas en un programa ya que cuando tenemos muchas líneas de código escritas en un programa, es casi seguro que se puede hacer una función con ellas que realice la misma acción y que nos permita simplificar el código.
+    Las funciones deben ser útiles y no muy largas.
+  </p>
+
+  <h2>como se crea una función</h2>
+  <p>
+    Las funciones tienen una firma/signatura/prototipo. Consiste en 3 partes:
+    <ul>
+      <li>Cómo se llama la función.</li>
+      <li>Qué valores va a aceptar la función</li>
+      <li>Qué tipo de datos va a retornar la función (si es que va a retornar alguno)</li>
+    </ul>
+  </p>
+
+  <h3>Cómo se ve una función en Java</h3>
+  <p>ejemplo de una función suma</p>
+  <code>
+
+    public static int suma(int a, int b) { 
+      return a + b;
+    }
+  </code>
+  <p>
+  partes:
+
+    - public static: (lo ignoramos de momento).
+
+    - int: Tipo de dato de retorno de la función. Este elemento nos indica el tipo de dato que nos va a devolver la función cuando se ejecute. En este caso, un "integer", un entero.
+
+    - suma: nombre de la función. En este caso, suma.
+
+    - (int a, int b): Parámetros que acepta la función. Entre paréntesis. Funcionan como dos variables que solo existen dentro de la función. Vienen marcados por un tipo de dato, es decir, que los parametros que se vayan a intruducir en la función deben ser del tipo indicado. Cuando yo invoque a una función, le tengo que pasar entre paréntesis los datos en el mismo tipo que nos indica la función. En los parámetros se pueden aceptar unos tipos de datos y luego que la función devuelva otros distintos. Pero eso si, si al principio de la función se determina que el tipo de dato de retorno es int, se debe devolver un int, si se determina un float, se ha de devolver un float, un string, un string, indistintamente de los parámetros que se indican en esta parte. Estos parámetros son varibles que solo existen dentro de la función, dentro del cuerpo de este programa. Se crean en la memoria en el momento en que se invoca a la función y, cuando esta termina, las variable dejan de existir.
+
+
+
+    - return a + b: Devolución de la suma de a+b.
+
+  En resumen, esta es una función que acepta dos parámetros, a y b, y que devuleve un integer.
+  </p>
+
+  <h3>Cuerpo de una función</h3>
+  <p>
+    Es donde la función implementa su lógica, el contenido de la función, lo que se encuentra en la llave de apertura y la de cierre. En el cuerpo se tiene acceso a las variables declaradas en la función (parámetros) y estas solo existen en el cuerpo de la función. Se pueden operar de la manera que se quiera.
+    Las variables que se declaran dentro de una función, solo pueden operarse dentro de la misma. Si se intenta llamar a esa misma variable fuera de ella, el programa no nos dejaría, nuestro IDE nos diría que la variable no existe. Eso si, se puede declarar una variable del mismo tipo y con el mismo nombre fuera de la función y no pasaría nada, cada variable se guardaría en una posición diferente de la memoria, no tendrían nada que ver una con la otra aunque se llamen igual.
+  </p>
+
+  <h3>Invocar una función</h3>
+  <p>
+    Se llama a la función escribiendo su nombre (suma, en el caso anterior) y entre paréntesis se escriben tantos parámetros como se pidan en la función (dos parametros de tipo int, en el caso anterior). En el caso anterior, la función pedía dos tipos de datos enteros y devolvía un entero. Ese dato que devuelve, se ha de almacenar en algún sitio para poder mostrarlo en pantalla o hacer lo que sea con él, y para ello lo que hacemos es guardarlo en una variable (que es como se almacenan los datos en el mundo de la informática en la memoria). Por lo tanto, al dato que nos devuelve la función lo llamaremos "resultado". Esta invocación y la función, en Java se verían de la siguiente manera:
+    <code>
+      public class Main {
+        public static void main(String[] args) {
+            int resultado;
+            resultado = suma(10,30);
+            System.out.println(resultado);
+        }
+    
+        public static int suma(int a, int b) {
+            return a+b;
+        }
+    }
+    </code>
+    El "System.out.println" es una función que hace que la variable "resultado" se imprima en una línea en la pantalla cuando ejecutamos el programa. En este caso, este pequeño programa tiene una función suma, la cual devuelve un entero cuando se la invoca, y una función principal al principio que le asigna una variable al resultado de la función suma, invoca dicha función y hace que se imprima en pantalla la variable del resultado de la función suma.
+  </p>
+
+  <p>
+    En el ejemplo que hemos visto, la función devolvía un valor, un int, pero realmente las funciones no tienen por qué devolver algo. Nosotros utilizamos funciones que devuelvan algo cuando esperamos invocar a esa función para que genere un resultado que vamos a utilizar a posteriori en otra parte del programa, es decir, que posteriormente vamos a tener que manipular el resultado que nos devuleva la función. Pero podemos utilizar una función simplemente para que se ejecute y que haga lo que tenga que hacer sin esperar nada a cambio. Este sería el caso de las funciones de tipo void. Por ejemplo, podríamos hacer correr la función suma de antes pero con el tipo de dato void:
+    <code>
+      public class Main {
+        public static void main(String[] args) {
+            suma(10,30);
+        }
+    
+        public static void suma(int a, int b) {
+            int resultado;
+            resultado = a+b;
+
+            System.out.println(resultado);
+        }
+      }
+    </code>
+    En este caso, el resultado del programa es el mismo pero se produce de manera diferente. No es que la función suma haya devuelto el resultado y que este se haya asignado a una variable para luego imprimirse, simplemente la función ha realizado su tarea, no ha devuelto nada y se ha mostrado tal como le hemos indicado. Todas las operaciones las hemos hecho dentro de la función suma: le damos dos parámetros, declaro una variable con resultado de la operación y le hacemos que se imprima. Y ya está, no se devuelve ningún valor a ningún sitio.
+    Si nos damos cuenta, la función main, que es especial en casi todos los lenguajes de programación, es de tipo void. Esto es así porque cuando se ejecuta un programa, internamente lo primero que se ejecuta es la función main, se hace una invocación a esta función main. La función main contiene todo el cuerpo principal del programa y, cuando finaliza el programa, como no queremos que se devuelva ningún valor, se utiliza el tipo de dato void.
+  </p>
+
+  <p>
+    Las funciones pueden aceptar parámetros o no, pueden aceptar varios parámetros, pueden aceptar parámetros de tipos diferentes y pueden devolver parámetros del tipo que nosotros queramos. Además, la mayoría de los lenguajes de programación actuales son modulares, es decir, que se pueden dividir los programas en partes más pequeñas, como por ejemplo un conjunto de funciones, y utilizarse en otros programas, compartirlas. Se pueden compartir dichas partes o módulos, exportar un conjunto de paquetes de funciones en librerías y que las utilicen otros desarrolladores (un jar de Java, por ejemplo).
+  </p>
+
+  <h3>Formas de pasar valores a las funciones</h3>
+  <p>
+    Entender esto tiene su intringulis porque algunos lenguajes de programación (como Java) esconden las operaciones que suceden por debajo del programa. Por ejemplo, esto que vamos a ver ahora se hace mediante punteros y en Java estos punteros no existen, no existe este concepto, los procedimientos que otros lenguajes hacen con los punteros (como en GO, donde si se trabaja con ellos) en Java se producen por debajo, no se ven estos procesos. Dicho esto, cuando invocamos a una función, se le pueden pasar parámetros de dos maneras.
+    <ul>
+      <li>Paso por valor</li>
+      <li>Paso por referencia</li>
+    </ul> 
+  </p>
+  <h4>Paso por valor</h4>
+  <p>
+    Es el ejemplo que hemos visto antes. Nosotros antes llamamos a la función suma y le indicamos que el primer parámetro fuera un 10 y que el segundo parámetro fuera un 30. Después, cuando invocamos a la función, los parámetros de esta se sustituyen por los parámetros anteriormente indicados, pero lo que se hace es crearse una copia, los valores antes indicados se copian en la función. Y no es que solamente se copie el valor, si no que se copia también el tipo de dato.
+    <code>
+      public class Main {
+        public static void main(String[] args) {
+            int param1 = 10; <!-- Este parámetro ocupa 4 bytes en la memoria-->  
+            int param2 = 30; <!-- Este parámetro ocupa 4 bytes en la memoria--> 
+            
+            suma(param1, param2);
+            
+        }
+    
+        public static void suma(int a, int b) {   <!-- Estos dos parámetros ocupan otros 4 bytes cada uno--> 
+            int resultado;
+            resultado = a+b;
+
+            System.out.println(resultado);
+        }
+      }
+    </code>
+    En este caso anterior vemos que los parámetros cuando llamamos a la función nos ocupan 4 bytes cada uno en la memoria y cuando invocamos a la función, estos parámetros y su tipo de dato se copian y nos ocupan otros 4 bytes cada uno, en total 16 bytes. Esto es importante saberlo porque cuando trabajemos con BBDD y hagamos una consulta que nos devuelva muchos resultados, no se deben copiar todos esos resultados en la función ya que se duplicaría el uso de la memoria.
+  </p>
+
+  <p>
+    Otra cosa en esto de hacer paso por valor, otra sintaxis diferente para hacer este último ejemplo sería la siguiente:
+    <code>
+      public class Main {
+        public static void main(String[] args) {
+            int param1 = 10; 
+            int param2 = 30;
+            
+            var valor = suma(param1, param2);
+
+            System.out.println (valor);
+            
+        }
+    
+        public static int suma(int a, int b) {
+            return = a+b;
+        }
+      }
+    </code>
+    En este caso, estamos declarando una variable "valor" con el tipo de dato "var". En este caso, no estamos indicando qué tipo de dato específico será el resultado, estamos dejando al compilador que decida que tipo de dato será en función de lo anterior. A veces lo hace bien, a veces mal.
+  </p>
+
+  <h4>Paso por referencia</h4>
+  <p>
+    Consiste en que cuando llamamos a la función, en vez de indicarle unos valores, lo que le indicamos es una dirección de memoria como parámetro, y la función modifica lo que haya en esa dirección de memoria, no copia los valores ni crea unas nuevas variables en otra zona de la memoria. Esto es más difícil verlo en Java ya que esto se realiza a través de punteros y los punteros no se ven en Java como decíamos antes. Resumidamente, un puntero no es más que una referencia a un área de la memoria de un ordenador. La forma más efectiva de ver un paso por referencia en Java es realizando una Instancia. Una instancia es todo objeto que derive de algún otro. <!-- Esto se verá más adelante)--> <!-- O no, porque te lo piden en el primer ejercicio xD-->
+  </p>
+  <p>
+    En GO por ejemplo si que se ve mejor esto de los punteros. Un ejemplo de un paso por referencia en GO sería el siguiente:
+    <code>
+      package main
+
+      import "fmt"
+
+      func main() {
+        param1 := 10 <!--Aquí indico los valores de los parámetros-->
+        param2 := 30
+        var resultado int <!--Aquí declaro la variable resultado-->
+
+        suma(param1, param2, &resultado) <!--Aquí  llamo a la función con los parámetros y le paso una dirección de memoria con el &resultado. Sin el & le pasaría un valor, con el & le paso una dirección de memoria.-->
+
+        fmt.Println(resultado)
+      }
+
+      func suma(a int, b int, c *int) { <!--Aquí con el * estoy indicando que el parámetro c es una dirección de memoria, el asterísco es un puntero-->
+        *c = a + b <!--Aquí estoy diciendo que quiero que el resultado de la suma a+b se guarde en la dirección de memoria de c-->
+      }
+    </code>
+    En este caso, vemos que la función suma no devuelve nada, que tiene un parámetro c que es donde se va a guardar el resultado de la suma a+b. El asterísco 
+  </p>
+
+  <h4>Instancias en Java</h4>
+  <p>
+    Para hacer un paso por refenrencia en Java, es necesario utilizar Instancias ya que para hacer un paso por referencia es necesario hace uso de punteros y Java no tiene el concepto de puntero ya que este tipo de acciones las maneja por debajo, es decir, no son visibles, Java esconde este tipo de acciones para hacer más sencillo su uso. Se declara de la siguiente manera:
+    <code>
+      public class Main {
+        public static void main (String[] args) {
+            Coche miCoche = new Coche(); <!--Aquí estamos llamando a la clase "Coche" y creando el objeto "miCoche" a partir de ella. Se crea con el comando "new Coche()"-->
+            miCoche.SumarPuerta(); <!--Aquí estamos invocando a la función para que realice la acción de sumar una puerta. Cada vez que se invoque, añadirá una puerta-->
+            System.out.println(miCoche.puertas); <!--Con esto se imprimirá el resultado de la variable puertas que tiene el objeto miCoche-->
+        }
+    
+    }
+    
+    class Coche { 
+        public int puertas = 3; <!--Aquí vemos las propiedades del objeto, en este caso, un número de puertas-->
+    
+        public void SumarPuerta() { <!--Aquí tenemos un método del objeto que consiste en una función que lo que hace es sumar más puertas a la variable puertas del objeto-->
+            this.puertas++; <!--Este elemento hace que se sumen las puertas, manipula los datos que hay en la variable "puertas"--> <!--expresión corta para sumar-->
+        }
+    }
+    </code>
+    Aunque nosotros no hayamos indicado ningún parámetro en el programa anterior, las puertas se añaden porque los objetos están trabajando por debajo con punteros. Al fin y al cabo un puntero es una referencia a un área de la memoria. 
+  </p>
+
+  <p>
+    Después de toda esta explicación, es evidente que la ventaja del paso por referencia respecto al paso por valor es la optimización de los recursos del ordenador, de la memoria en este caso.
+  </p>
+
+  <h3>Funciones recursivas</h3>
+  <p>
+    Una función que devuelve un valor y que se invoca a si misma. En Java, tiene la siguiente forma:
+    <code>
+      public class Main {
+        public static void main(String[] args) {
+            suma(10,30); <!--Aquí se llama a la función suma con los valores a=10 y b=30-->
+        }
+    
+        public static int suma(int a, int b) {
+            int resultado = a+b; <!--Aquí declaramos la variable resultado, que es igual al parámetro a más el parámetro b-->
+
+            System.out.println(resultado);
+
+            return suma(a, b) <!--Aquí indicamos que el valor que nos devuelve la función sea una llamada a la función suma-->
+        }
+      }
+    </code>
+    Esta función entraría en un bucle infinito porque estaría ejecutándose y llamándose a sí misma constantemente.
+  </p>
+
+  <h3>Funciones callback</h3>
+  <p>
+    Un callback es una función que "se llama hacia atrás", es decir, consiste en asginar el nombre de una función a una variable y llamar indirectamente a una función a través de la variable.
+
+    // mivariable = funcion();
+    // mivariable();
+
+    Estas funciones funcionan a través de punteros. En Java los callbacks como tales no existen, no se pueden hacer así como así, habría que utilizar Interfaces (se verá más adelante). En C o Go si que se ve más fácilmente.
+  </p>
+</body>
+</html>

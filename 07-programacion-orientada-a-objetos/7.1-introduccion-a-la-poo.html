@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Introducción a la programación orientada a objetos</h1>
+  <h2>¿Qué son los objetos?</h2>
+  <p>
+    Son entidades que representan objetos del mundo real en nuestro programa informático. Tienen una serie de propiedaddes y son capaces de realizar una serie de acciones denominadas métodos, que al fin y al cabo son las funciones que se encuentran dentro de una clase.
+  </p>
+  <p>
+    Los objetos se declaran de formas diferentes según el lenguaje de programación: mediante funciones dentro de estructuras en Go por ejemplo o mediante clases en Java, Python, PHP, C++, etc.
+  </p>
+  <p>
+    Las clases están formadas por propiedades (que son variables) y métodos (que son funciones). En Java, los objetos se crean instanciándolos a partir de las clases. Instanciarlo significa que nosotros creamos una zona de la memoria a través de una variable que tendrá las mismas propiedades y métodos que la clase de la que proviene.
+    Para crear una instancia, primero se escribe el nombre de la clase seguido del nombre de la variable que queramos que tenga ese objeto. Escribir el nombre de la clase funciona como un tipo de dato, es decir, cuando declaramos una nueva variable, tenemos que indicar de qué tipo de dato será, y este caso hacemos lo mismo con la clase. Después se escribe que esto anterior es igual a la palabra "new"  + el nombre de la clase para indicar que queremos crear un nuevo objeto de la clase x. (Esta expresión impera que declaramos una nueva variable perteneciente a una clase y a su vez la inicializas creando una nueva refenrencia en memoria que sea del tipo de esa clase. En ese momento, tendremos creado un objeto de esa misma clase con el cual podremos trabajar.) <!--Más o menos lo que decía al principio del párrafo-->
+  </p>
+  <p>
+    Se pueden crear varias variables de una misma clase y, aunque tengan las mismas propiedades y mismos métodos, son variables independientes las unas de las otras (se guardan en zonas diferentes de la memoria).
+  </p>
+
+  <h2>Constructor de clases</h2>
+  <p>
+    Un constructor es una función que se ejecuta cada vez que se instancia un objeto de una clase. Los constructores de una clase se escriben dentro de la clase y son métodos cuyo nombre coincide y debe ser idéntico al nombre de la misma. Se caracterizan por no tener tipo de retorno, ni siquiera void. Cuando no se crea un constructor, Java lo crea automáticamente, pero en el momento en que construimos un constructor, Java ya no creará constructores y sería necesario construir el resto cada vez que queramos crear una clase. El constructor se ejecuta cada vez que creamos un nuevo objeto, es lo primero que se ejecuta cuando se ejecuta una instancia de una clase, es decir, que cuando creamos un objeto, la línea de ejecución del programa pasa primero por aquí.
+  </p>
+  <p>
+    Un constructor es una forma de inicializar las propiedades de una clase cuando la instanciamos, es decir, que nostros podemos tener declardas unas variables/propiedades en la clase pero sin haberles asginado ningún valor y luego en el cuerpo de la función/constructor darles un valor específico a las variables y así cuando se cree un objeto de este constructor tendrá ya unas propiedades con unos valores por defecto. Puede tener parámetros. Tiene un cuerpo donde incluir funciones.
+    Los constructores son siempre públicos.
+  </p>
+  <p>
+    (La clase se instancia, el objeto se crea instanciando su clase. El constructor se ejecuta cada vez que se ejecuta la línea de la instancia).
+  </p>
+  <p>
+    float = double? ambos son valores decimales.
+  </p>
+  <p>
+    Como decíamos, al constructor se le pueden dar unos parámetros, que serán unas variables propias de ese constructor que solo existirán para los objetos que se creen a partir de él, es decir, los objetos creados de un constructor pueden tener propiedades específicas solo de ese constructor. Los valores de esos parámetros se indican cuando se instancia la clase para ese objeto, se le dan los valores de los parámetros en la línea de la instancia.
+  </p>
+
+  <h2>Sobrecarga de constructores (constructor overloading)</h2>
+  <p>
+    Consiste en que yo puedo tener dos funciones con el mismo prototipo, el mismo tipado, pero con parámetros diferentes. Puedo crear dos constructores en una misma clase en los que uno acepte parámetros y el otro no. Los objetos que se instancien a partir de ellos tendrán la misma sintaxis, pero a la hora de hacerlo, si yo a la función le doy unos parámetros estaré llamando al constructor de los parámetros y si no se los doy, estaré llamando al constructor sin los parámetros.
+  </p>
+  <p>
+    El constructor es lo primero que se ejecuta cuando se instancia una clase y es el lugar más propicio para inicializar las propiedades de una clase.
+  </p>
+  <p>
+    También hay funciones que se pueden sobrecargar en el tipo de dato, es decir, funciones que se sobrecargan para poder invocar una misma función de dos maneras diferentes, con dos tipos de datos diferentes. Esto es que se pueden llamar a dos funciones con los mismos parámetros y que realicen la misma acción pero que acepten y/o devuelvan tipos de datos diferentes.
+  </p>
+  <p>
+    Cuando tenemos un constructor con parámetros, lo normal es que los parámetros estén relacionados con las variables declaradas en la clase del constructor, y por lo tanto esos parámetros le den valor a estas variables. Cuando queremos inicializar variables de la clase dentro del constructor, debemos darle el mismo nombre de las propiedades a los parámetros. Pero en este caso nos quedaría que las variables de las propiedades de la clase y las variables internas del constructor se llamarían igual, por lo que para diferenciarlas tendríamos que ponerle "this." delante de la variable que hace referencia a las propiedades de la clase (ejemplo en intellij). Con ello le decimos al programa que queremos que las propiedades de la clase, dentro de esta función, tengan el mismo valor que el que le estamos indicando en los parámetros de la función/constructor.
+  </p>
+</body>
+</html>
