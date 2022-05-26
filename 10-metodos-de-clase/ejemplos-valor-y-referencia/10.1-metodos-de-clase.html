@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Métodos de clase</h1>
+  <h2>Métodos de clase y cómo invocar a los métodos</h2>
+  <p>En capítulos anteriores sobre introducción a la programación...: 
+    - Tenemos clases, compuestas por propiedades (variables) y métodos (funciones).
+    - Los métodos están formados por la firma/signature/prototipo y el cuerpo de la función. El prototipo es la forma en que se declara la función. El prototipo de un método de una clase está formado por:
+        · Su visibilidad: Pública (se puede utilizar la función fuera de la clase) o privada (solo se puede usar dentro de la clase).
+        · Lo que devuelve: el tipo de dato que devuelva la función o "void" si no devuelve nada.
+        · Nombre del método.
+        · Los parámetros que acepte la función, cada parámetro con su tipo de dato correspondiente. Se escriben entre paréntesis. Puede no aceptar parámetros, se escribirían los paréntesis pero se dejarían vacíos.
+  </p>
+  <code>
+    clase A
+      propiedad1
+      propiedad2
+
+      publica tipodato nombreMetodo1 (param1, param2)
+      privado void nombreMetodo2 (param3, param4)
+  </code>
+  <p>
+    - Los métodos de una clase se invocan creando un objeto de esa clase, es decir, se instancia la clase dentro de la clase principal y se llama al método a través del objeto creado (para ello el método debe ser público). Entre paréntesis se escribirían los parámetros si fuera necesario.
+    - Se pueden crear también otros métodos dentro de la clase principal propios de la clase principal. Estos no hacen falta instanciarlos para invocarlos porque los métodos de una misma clase se pueden utilizar directamente dentro de ella.
+  </p>
+
+  <h2>Cómo usar interfaces</h2>
+  <p>
+    Habíamos dicho que las interfaces son una forma de indicar a los programadores que deben cumplir con algo. También que las interfaces no se pueden utilizar directamente, si no que hay que crear una clase que implemente la interface para implementar en ella los métodos de la interface. Pues para ejecutar un método de una interface, lo que hay que hacer es crear una función en el main a la que hay que darle como parámetro el nombre de la interface como si fuera un tipo de dato y el nombre a una nueva variable que le daremos el mismo que tiene la interface (ejemplo en intellij). Esto es así porque le exigimos que el parámetro de esta función sea una clase que implemente esa interface. Cuando yo estoy requiriendo que se me pase una interface como parámetro, lo que realmente estoy pidiendo es que me pasen como parámetro el nombre de una clase que implemmente esa interface.
+  </p>
+  <p>
+    Decimos que una clase satisface a una interface cuando una clase implementa todos los métodos de esa interface, aunque por ejemplo el lenguaje Java nos obliga a implementar todos los métodos, en otros lenguajes se pueden implementar interfaces parcialmente.
+  </p>
+  <p>
+    Una vez implementado todo esto, lo que tenemos es una serie de funciones que lo que hacen es envolver (lo llamamos wraper). Nosotros al crear una función/método a la que le decimos que nos pase como parámetro un objeto que satisfazga la interface, sabemos que, sin tocar el código y con la misma función, dependiendo del parámetro objeto que estemos recibiendo, se ejecutará el método de la función en una clase u en otra.
+    A esto se le llama Metaprogramación porque tú defines una serie de cosas que hacer y luego se pueden implementar de forma diferente mientras se cumpla el prototipo de la interface (igual que con las clases abstractas).
+    La gran ventaja de las interfaces es que una vez escrito el envolvtorio, el envoltorio ya no se toca, lo único que hay que cambiar es la clase, la implementación del método en la clase. Gracias a esto, nos ahorramos de escribir un montón de líneas de código de funciones.
+  </p>
+  <p>
+    (Otra explicación) A través de una función envoltoria, esa función invoca por debajo a la función real, que puede estar implementada de diferentes formas, pero ese envoltorio permanercerá inmutable. Lo único que habŕa que cambiar (si es que hay que cambiar) es el código por debajo o implementar nuevas clases.
+  </p>
+  <p>
+    Ejemplo real de interface: 
+    <code>
+      funcion listarUsuarios (interface usuarios)
+        interface Usuarios ejecuta el metodo getUsuarios
+
+      invoco a listarUsuarios (objeto de la clase Usuarios txt o bbdd)
+
+      interfaz Usuarios
+        metodo getUsuario()
+
+      class Usuariostxt implementa la interface Usuarios
+        metodo get Usuarios()
+          leer un fichero .txt
+          devolver todas las lineas
+      
+      class Usuariosbbdd implementa la interface Usuarios
+        metodo getUsuarios()
+          conetarme a Mysql
+          ejecutar "select* from..."
+          devolver todos los resultados
+    </code>
+  </p>
+
+  <h2>Paso de parámetros por valor o por referencia</h2>
+  <p>
+    Por valor consiste en que cuando yo tengo dos valores guardados en dos variable (y por lo tanto guardados en la meoria), llamo a una función y le doy esos valores,  estos se copian en la función, por lo que estos valores estarían duplicados, almacenados en dos sitios difentes de la memoria y ocupando el doble de espacio. EL valor original no se modifica, se duplica. Los valores duplicados se guardarían y solo existirían en el ámbito de la función, que es lo que se encuentra entre las llaves de la misma, su cuerpo. Estos valores duplicados en el ámbito de la función es operarían ahí de la manera que dijera la función, se modificarían y tal dejando intactos los valores originales y modificando solo los duplicados, y dejarían de existir en el momento en que terminara de ejecutarse la función. 
+  </p>
+  <p>
+    Por referencia consiste en que a la función le pasamos la dirección de los valores en la memoria, el punto de la memoria donde están guardados y la función opera con ellos en su propia dirección, en su propio hueco, en el propio lugar donde están almacenados. Modifica las propias variables originales alterando su valor.
+  </p>
+  <p>
+    En Java, los pasos por referencia no se hacen de manera visible como en otros lenguajes ya que no existen los punteros específicamente pero en otros lenguajes si y estos punteros marcan explícitamente cuando un parámetro se está compartiendo por valor o por referencia. En Java, por ejemplo, se pasa por referencia cuando el parámetro de una función es un objeto, ya que lo que le estamos indicando la referencia del objeto. Por ejmplo cuando instanciamos un objeto estamso crenado un puntero, una zona de memoria del tipo objeto y accedemos a ella a través de la variable del objeto. Y así manipulamos la variable original de la clase del objeto del que estamos haciendo referncia.
+    En Java, habitualmente las referencias solamente es cuando pasamos un objeto. Tipicamente siempre es paso por valor excepto cuando el método recibe como parámetro un obejto. EN el momomento en que un método recibe como parámetro un objeto es un paso por referencia. Los objetos son direcciones de memoria escondidas, no se ven pero son direcciones de memoria. Los parámetros no objeto son valores.
+  </p>
+  <p>
+    En Go por ejemplo los punteros se muestran explícitamente con arteríscos. Las direcciones de memoria se representan con &.
+  </p>
+
+  <h2>Recursividad</h2>
+  <p>
+    Consiste en un método que se llama a si mismo de manera infinita. Se controla con estructuras de control. Es útil para ahorar código. Pero es importante controlar los estados para parar la recursividad porque se puede crear un bucle infinito y fastidiar el programa, la máquina donde se ejecuta el programa o el servidor.
+  </p>
+  <code>
+    funcion suma (int a, int b)
+      var temp = a+b
+
+      si temp no es mayor a 15
+        suma (int a, temp)
+  </code>
+  <p>
+    Ejemplo de función recursiva, el factorial de un número.
+  </p>
+  <p>
+    (Comprobar la recursividad de una función con el depurador. Se ve cómo va operando la gunción hasta terminar con la correspondiente estructura de control. En la pila de llamadas se ve el camino que hace el programa).
+    Concepto de propagar. La función finaliza decrementando el número de llamadas. EL return se propaga. <!--NI puta idea hermano-->
+  </p>
+  <p>
+    Otro ejemplo de función recursiva más sencillo, con ints y valores etc.
+  </p>
+</body>
+</html>
